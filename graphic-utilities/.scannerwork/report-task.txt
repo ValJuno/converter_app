@@ -1,0 +1,6 @@
+projectKey=graphic-utilities
+serverUrl=http://localhost:9000
+serverVersion=8.6.0.39681
+dashboardUrl=http://localhost:9000/dashboard?id=graphic-utilities
+ceTaskId=AXZmjeWjgZ-QrmtnV_3F
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXZmjeWjgZ-QrmtnV_3F
