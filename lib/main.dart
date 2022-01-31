@@ -1,7 +1,7 @@
+import 'package:converter_app/converter.dart';
 import 'package:flutter/material.dart';
-import 'package:graphic_utilities/border_bottom_box.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graphic_utilities/page_body.dart';
-import 'package:labelled_text/labelled_text.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final int groups = 4;
+  final int groups = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -45,16 +45,23 @@ class _MyHomePageState extends State<MyHomePage> {
           bottom: const TabBar(
             tabs: [
               Tab(
-                text: "Lunghezza",
+                // text: "Lunghezza",
+                icon: FaIcon(FontAwesomeIcons.ruler),
               ),
               Tab(
-                text: "Massa",
+                // text: "Massa",
+                icon: FaIcon(FontAwesomeIcons.weight),
               ),
               Tab(
-                text: "Volume",
+                // text: "Volume",
+                icon: FaIcon(FontAwesomeIcons.glassWhiskey),
               ),
               Tab(
-                text: "Temperatura",
+                // text: "Temperatura",
+                icon: FaIcon(FontAwesomeIcons.thermometerHalf),
+              ),
+              Tab(
+                icon: FaIcon(FontAwesomeIcons.blender),
               ),
             ],
           ),
@@ -64,28 +71,117 @@ class _MyHomePageState extends State<MyHomePage> {
             PageBody(
               child: Column(
                 children: [
-                  BorderBottomBox(
-                    child: Column(
-                      children: [
-                        LabelledText(
-                          text: "",
-                          labelText: "inch",
-                          editable: true,
-                        ),
-                        LabelledText(
-                          text: "",
-                          labelText: "cm",
-                          editable: false,
-                        ),
-                      ],
-                    ),
+                  Converter(
+                    startUnity: "Inch",
+                    endUnity: "cm",
+                    conversion: (start) {
+                      return start * 2.54;
+                    },
+                  ),
+                  Converter(
+                    startUnity: "Foot",
+                    endUnity: "m",
+                    conversion: (start) {
+                      return start * 0.3048;
+                    },
+                  ),
+                  Converter(
+                    startUnity: "Jard",
+                    endUnity: "m",
+                    conversion: (start) {
+                      return start * 0.9144;
+                    },
+                  ),
+                  Converter(
+                    startUnity: "mile",
+                    endUnity: "km",
+                    conversion: (start) {
+                      return start * 1.609344;
+                    },
                   ),
                 ],
               ),
             ),
-            PageBody(child: Center(child: Text("qui ci sono le masse"))),
-            PageBody(child: Center(child: Text("qui ci sono i volumi"))),
-            PageBody(child: Center(child: Text("qui ci sono le temperature"))),
+            PageBody(
+              child: Column(
+                children: [
+                  Converter(
+                    startUnity: "oz",
+                    endUnity: "g",
+                    conversion: (start) {
+                      return start * 28.349523;
+                    },
+                  ),
+                  Converter(
+                    startUnity: "lb",
+                    endUnity: "kg",
+                    conversion: (start) {
+                      return start * 0.45359237;
+                    },
+                  ),
+                ],
+              ),
+            ),
+            PageBody(
+              child: Column(
+                children: [
+                  Converter(
+                    startUnity: "pinta",
+                    endUnity: "ml",
+                    conversion: (start) {
+                      return start * 568;
+                    },
+                  ),
+                  Converter(
+                    startUnity: "gallone",
+                    endUnity: "l",
+                    conversion: (start) {
+                      return start * 4.546;
+                    },
+                  ),
+                ],
+              ),
+            ),
+            PageBody(
+              child: Column(
+                children: [
+                  Converter(
+                    startUnity: "°F",
+                    endUnity: "°C",
+                    conversion: (start) {
+                      return (start - 32) / 1.8;
+                    },
+                  ),
+                ],
+              ),
+            ),
+            PageBody(
+              child: Column(
+                children: [
+                  Converter(
+                    startUnity: "Tazza",
+                    endUnity: "ml",
+                    conversion: (start) {
+                      return start * 250;
+                    },
+                  ),
+                  Converter(
+                    startUnity: "cucchiaino",
+                    endUnity: "g",
+                    conversion: (start) {
+                      return start * 5;
+                    },
+                  ),
+                  Converter(
+                    startUnity: "Cucchiaio",
+                    endUnity: "g",
+                    conversion: (start) {
+                      return start * 20;
+                    },
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
